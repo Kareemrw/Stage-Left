@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SceneEdge
+  - Day1
+  - Day2
+  - Day3
+  - Day4
+  - Day5
   layers:
   - Default
   - TransparentFX
@@ -40,4 +46,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1344589541
+    locked: 0
+  - name: MiddleGround
+    uniqueID: 3790704013
+    locked: 0
+  - name: Foreground
+    uniqueID: 1242320031
     locked: 0
