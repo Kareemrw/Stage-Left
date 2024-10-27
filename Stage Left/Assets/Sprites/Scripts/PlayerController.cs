@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float hSpeed;
     private float hMove;
+    
+    private bool faceRight = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +21,19 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(new Vector2(hMove * hSpeed, 0));
         }
+
+        if (hMove > 0 && !faceRight) Flip();
+     
+
+        if (hMove < 0 && faceRight) Flip();
+    }
+
+    void Flip()
+    {
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+
+        faceRight = !faceRight; ;
     }
 }
