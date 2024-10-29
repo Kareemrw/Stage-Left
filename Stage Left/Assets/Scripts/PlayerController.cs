@@ -103,10 +103,15 @@ public class PlayerController : MonoBehaviour
       public void dayUpdate()
     {
         this.dayCount += 1;
-
+        
         // Activates left SceneTrigger to allow for game end state
         if (this.dayCount == 2)
         {
+            GameObject[] day2Objects = GameObject.FindGameObjectsWithTag("Day2");
+            foreach (GameObject obj in day2Objects)
+            {
+                obj.SetActive(true);
+            }
             leftTrigger.SetActive(true);
         }
     }
@@ -116,4 +121,13 @@ public class PlayerController : MonoBehaviour
     {
         return "Day"+this.dayCount;
     }
+    public void RemoveObjectsWithTag(string tag)
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject obj in objects)
+        {
+            obj.SetActive(false);
+        }
+    }
+
 }

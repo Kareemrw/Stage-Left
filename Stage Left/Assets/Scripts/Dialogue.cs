@@ -10,7 +10,7 @@ public class Dialogue : MonoBehaviour
     public string[] lines;
     public string[] objectLines;
     public float textSpeed;
-    
+    private bool objectTalk = false;
     private int index;
     private bool isDialogueActive;
     private bool isObjectDialogueActive;
@@ -25,6 +25,11 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
+        if(PlayerController.givenObject == true) 
+        {
+            playerController.dayUpdate();
+            playerController.RemoveObjectsWithTag("Day1");
+        }
         if ((isDialogueActive || isObjectDialogueActive) && Input.GetMouseButtonDown(0))
         {
             if (index >= GetCurrentLines().Length)
@@ -86,7 +91,7 @@ public class Dialogue : MonoBehaviour
         textComponent.text = string.Empty;
         StartCoroutine(TypeLine());
         PlayerController.hasObject = false;
-        PlayerController.givenObject = true;
+        objectTalk = true;
          BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
     Debug.Log("Number of BoxColliders found: " + colliders.Length);
 
@@ -131,6 +136,7 @@ public class Dialogue : MonoBehaviour
         textComponent.transform.parent.gameObject.SetActive(false);
         isDialogueActive = false;
         isObjectDialogueActive = false;
+        if(objectTalk == true) PlayerController.givenObject = true;
         index = 0;
     }
 
