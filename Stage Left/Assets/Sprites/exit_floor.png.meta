@@ -5,6 +5,12 @@ TextureImporter:
   - first:
       213: 7759319833382193352
     second: exit_floor_0
+<<<<<<< HEAD
+=======
+  - first:
+      213: 5175878788932986709
+    second: exit_floor_1
+>>>>>>> Scene-Creation
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -117,6 +123,30 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+<<<<<<< HEAD
+=======
+        y: 91
+        width: 368
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c8836f1744aeab60800000000000000
+      internalID: 7759319833382193352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exit_floor_1
+      rect:
+        serializedVersion: 2
+        x: 0
+>>>>>>> Scene-Creation
         y: 0
         width: 368
         height: 34
@@ -127,8 +157,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
+<<<<<<< HEAD
       spriteID: 8c8836f1744aeab60800000000000000
       internalID: 7759319833382193352
+=======
+      spriteID: 55764d6e55a64d740800000000000000
+      internalID: 5175878788932986709
+>>>>>>> Scene-Creation
       vertices: []
       indices: 
       edges: []

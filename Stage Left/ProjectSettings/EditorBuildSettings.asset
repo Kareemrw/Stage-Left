@@ -9,10 +9,22 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 59f516c58a353b244b29e56d625b8592
+  - enabled: 1
+    path: Assets/Scenes/Exit.unity
+    guid: fe4b41dcac92b1c4083b955be8fe84b3
+  - enabled: 1
     path: Assets/Scenes/Backstage.unity
     guid: f8b396ca0ddc854488f00906f08fdf2d
   - enabled: 1
     path: Assets/Scenes/Stage.unity
     guid: c4b57b8bc39050644a7b06e1a293355f
+  - enabled: 1
+    path: Assets/Scenes/Seats.unity
+    guid: 7c575e426ec82164dbdf4e8ea9d8b41e
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: e2e0422b460fd3446b49b431f2a59a97
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

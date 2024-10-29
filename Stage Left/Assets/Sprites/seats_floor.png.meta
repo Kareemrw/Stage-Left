@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: fe70a7c94ddf6f346af9c92992cfcd93
+guid: 09fc498cce2b28b43a792f70ff95a970
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7246238628809191353
-    second: exit 1_0
-=======
-guid: 900b032f82dca274bbe39f0a51c39726
-TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -4781373940957465942
-    second: exit_0
->>>>>>> Scene-Creation
+      213: 3747149757075413217
+    second: seats_floor_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 37
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,17 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-<<<<<<< HEAD
-      name: exit 1_0
-=======
-      name: exit_0
->>>>>>> Scene-Creation
+      name: seats_floor_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 368
-        height: 176
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,13 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-<<<<<<< HEAD
-      spriteID: 9bfa2e304afcf8460800000000000000
-      internalID: 7246238628809191353
-=======
-      spriteID: aa2bbe6cbb525adb0800000000000000
-      internalID: -4781373940957465942
->>>>>>> Scene-Creation
+      spriteID: 1e8dbaec9dc800430800000000000000
+      internalID: 3747149757075413217
       vertices: []
       indices: 
       edges: []
@@ -161,12 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-<<<<<<< HEAD
     nameFileIdTable:
-      exit 1_0: 7246238628809191353
-=======
-    nameFileIdTable: {}
->>>>>>> Scene-Creation
+      seats_floor_0: 3747149757075413217
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
