@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
             if (hMove < 0 && faceRight) Flip();
 
         }
-        Debug.Log("hasObject status: " + PlayerController.hasObject);
+
     }
 
     void Flip()

@@ -50,18 +50,15 @@ public class Dialogue : MonoBehaviour
     {
         if (textComponent == null)
         {
-            Debug.LogError("Text Component is not assigned!");
             return;
         }
 
         if (lines.Length == 0)
         {
-            Debug.LogWarning("No dialogue lines available.");
             EndDialogue();
             return;
         }
 
-        Debug.Log("Starting player dialogue...");
         index = 0;
         isDialogueActive = true;
         isObjectDialogueActive = false;
@@ -74,18 +71,15 @@ public class Dialogue : MonoBehaviour
     {
         if (textComponent == null)
         {
-            Debug.LogError("Text Component is not assigned!");
             return;
         }
 
         if (objectLines.Length == 0)
         {
-            Debug.LogWarning("No object dialogue lines available. Defaulting to regular dialogue lines.");
             StartDialogue();
             return;
         }
 
-        Debug.Log("Starting object dialogue...");
         index = 0;
         isObjectDialogueActive = true;
         isDialogueActive = false;
@@ -121,7 +115,6 @@ public class Dialogue : MonoBehaviour
 
     void EndDialogue()
     {
-        Debug.Log("Dialogue ended.");
         textComponent.transform.parent.gameObject.SetActive(false);
         isDialogueActive = false;
         isObjectDialogueActive = false;
