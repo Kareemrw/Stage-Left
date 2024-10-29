@@ -6,13 +6,15 @@ using TMPro;
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
+    public PlayerController playerController;
     public string[] lines;
+    public string[] objectLines;
     public float textSpeed;
 
     private int index;
     private bool isDialogueActive;
+    private bool isObjectDialogueActive;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (textComponent != null)
@@ -22,19 +24,24 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (isDialogueActive && Input.GetMouseButtonDown(0))
+        if ((isDialogueActive || isObjectDialogueActive) && Input.GetMouseButtonDown(0))
         {
-            if (textComponent.text == lines[index])
+            if (index >= GetCurrentLines().Length)
+            {
+                EndDialogue();
+                return;
+            }
+
+            if (textComponent.text == GetCurrentLines()[index])
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = GetCurrentLines()[index];
             }
         }
     }
@@ -47,17 +54,50 @@ public class Dialogue : MonoBehaviour
             return;
         }
 
-        Debug.Log("Starting dialogue...");
+        if (lines.Length == 0)
+        {
+            Debug.LogWarning("No dialogue lines available.");
+            EndDialogue();
+            return;
+        }
+
+        Debug.Log("Starting player dialogue...");
         index = 0;
         isDialogueActive = true;
-        textComponent.transform.parent.gameObject.SetActive(true);  // Activate the text component to make it visible
-        textComponent.text = string.Empty; // Start with an empty text
+        isObjectDialogueActive = false;
+        textComponent.transform.parent.gameObject.SetActive(true);
+        textComponent.text = string.Empty;
         StartCoroutine(TypeLine());
+    }
+
+    public void ObjectStartDialogue()
+    {
+        if (textComponent == null)
+        {
+            Debug.LogError("Text Component is not assigned!");
+            return;
+        }
+
+        if (objectLines.Length == 0)
+        {
+            Debug.LogWarning("No object dialogue lines available. Defaulting to regular dialogue lines.");
+            StartDialogue();
+            return;
+        }
+
+        Debug.Log("Starting object dialogue...");
+        index = 0;
+        isObjectDialogueActive = true;
+        isDialogueActive = false;
+        textComponent.transform.parent.gameObject.SetActive(true);
+        textComponent.text = string.Empty;
+        StartCoroutine(TypeLine());
+        PlayerController.hasObject = false;
     }
 
     IEnumerator TypeLine()
     {
-        foreach (char c in lines[index].ToCharArray())
+        foreach (char c in GetCurrentLines()[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
@@ -66,11 +106,11 @@ public class Dialogue : MonoBehaviour
 
     void NextLine()
     {
-        if (index < lines.Length - 1)
+        if (index < GetCurrentLines().Length - 1)
         {
             index++;
             textComponent.text = string.Empty;
-            StopAllCoroutines(); // Stop any ongoing typing coroutines before starting a new line
+            StopAllCoroutines();
             StartCoroutine(TypeLine());
         }
         else
@@ -82,12 +122,20 @@ public class Dialogue : MonoBehaviour
     void EndDialogue()
     {
         Debug.Log("Dialogue ended.");
-        textComponent.transform.parent.gameObject.SetActive(false); // Hide the text component when dialogue ends
+        textComponent.transform.parent.gameObject.SetActive(false);
         isDialogueActive = false;
+        isObjectDialogueActive = false;
+        index = 0;
     }
 
     public bool IsDialogueActive()
     {
-        return isDialogueActive;
+        return isDialogueActive || isObjectDialogueActive;
+    }
+
+    private string[] GetCurrentLines()
+    {
+        string[] currentLines = isObjectDialogueActive ? objectLines : lines;
+        return currentLines != null && currentLines.Length > 0 ? currentLines : new string[0];
     }
 }

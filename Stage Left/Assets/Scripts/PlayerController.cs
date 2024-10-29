@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool faceRight = true;
     private bool canTalk = false; // Indicates if the player can interact
     private Dialogue currentDialogue; // Reference to the current NPC dialogue
+    public static bool hasObject = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +31,11 @@ public class PlayerController : MonoBehaviour
             }
 
             if (hMove > 0 && !faceRight) Flip();
-
+            
             if (hMove < 0 && faceRight) Flip();
+
         }
+        Debug.Log("hasObject status: " + PlayerController.hasObject);
     }
 
     void Flip()
@@ -58,7 +61,8 @@ public class PlayerController : MonoBehaviour
                 {
                     eKeyTransform.gameObject.SetActive(false);
                 }
-                currentDialogue.StartDialogue(); // Start the dialogue
+                if(hasObject == false) currentDialogue.StartDialogue(); // Start the dialogue
+                else currentDialogue.ObjectStartDialogue();
             }
         }
     }
