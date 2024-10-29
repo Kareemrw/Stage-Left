@@ -390,6 +390,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3888009675218174582, guid: 62d2d908f3e187a4585988fde8bd7543, type: 3}
+      propertyPath: hSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888009675218174582, guid: 62d2d908f3e187a4585988fde8bd7543, type: 3}
+      propertyPath: dayCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888009675218174582, guid: 62d2d908f3e187a4585988fde8bd7543, type: 3}
       propertyPath: leftTrigger
       value: 
       objectReference: {fileID: 8838235250353300707, guid: 8b3bb8cef55dbf94da06500a7e9d4a5a, type: 3}
@@ -652,7 +660,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -719,6 +727,10 @@ PrefabInstance:
     - target: {fileID: 22588165632670448, guid: ec1373a802ec0d6468ede4e36c8ee7cd, type: 3}
       propertyPath: m_Name
       value: NPC2
+      objectReference: {fileID: 0}
+    - target: {fileID: 22588165632670448, guid: ec1373a802ec0d6468ede4e36c8ee7cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22588165632670448, guid: ec1373a802ec0d6468ede4e36c8ee7cd, type: 3}
       propertyPath: m_TagString
@@ -980,9 +992,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5495921356378618507, guid: 46b625b2c54bd904caae9d89fa1ddeb9, type: 3}
+      propertyPath: m_TagString
+      value: Day2
+      objectReference: {fileID: 0}
     - target: {fileID: 6766480570513086732, guid: 46b625b2c54bd904caae9d89fa1ddeb9, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766480570513086732, guid: 46b625b2c54bd904caae9d89fa1ddeb9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766480570513086732, guid: 46b625b2c54bd904caae9d89fa1ddeb9, type: 3}
+      propertyPath: m_TagString
+      value: Day1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

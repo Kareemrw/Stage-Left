@@ -33,11 +33,7 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        if(PlayerController.givenObject == true) 
-        {
-            playerController.DayUpdate();
-            playerController.RemoveObjectsWithTag("Day1");
-        }
+        
         if ((isDialogueActive || isObjectDialogueActive) && Input.GetMouseButtonDown(0))
         {
             if (index >= GetCurrentLines().Length)
@@ -145,6 +141,12 @@ public class Dialogue : MonoBehaviour
         isDialogueActive = false;
         isObjectDialogueActive = false;
         if(objectTalk == true) PlayerController.givenObject = true;
+        if(PlayerController.givenObject == true) 
+        {
+            playerController.DayUpdate();
+            playerController.RemoveObjectsWithTag("Day1");
+            PlayerController.givenObject = false;
+        }
         index = 0;
     }
 
