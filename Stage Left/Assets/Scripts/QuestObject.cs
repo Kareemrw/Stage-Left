@@ -13,9 +13,12 @@ public class QuestObject : MonoBehaviour
         // Check if player is in range and presses the "E" key
         if (canGrab)
         {
+            PlayerController.givenObject = false;
+            //PlayerController.givenObject = false;
             if (Input.GetKeyDown(KeyCode.E))
             {
                 grabObject();
+                
             }
         }
 

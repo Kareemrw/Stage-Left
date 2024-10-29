@@ -161,12 +161,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     nameFileIdTable:
       exit 1_0: 7246238628809191353
 =======
     nameFileIdTable: {}
 >>>>>>> Scene-Creation
+=======
+    nameFileIdTable:
+      exit_0: -4781373940957465942
+>>>>>>> Stashed changes
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

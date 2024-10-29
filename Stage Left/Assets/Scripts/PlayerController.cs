@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private bool canTalk = false; // Indicates if the player can interact
     private Dialogue currentDialogue; // Reference to the current NPC dialogue
     public static bool hasObject = false;
-
+    public static bool givenObject = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(givenObject);
         // Check if the player can interact and presses the "E" key
         if (canTalk && Input.GetKeyDown(KeyCode.E))
         {
@@ -61,8 +62,9 @@ public class PlayerController : MonoBehaviour
                 {
                     eKeyTransform.gameObject.SetActive(false);
                 }
-                if(hasObject == false) currentDialogue.StartDialogue(); // Start the dialogue
-                else currentDialogue.ObjectStartDialogue();
+                if(hasObject == false && givenObject == false) currentDialogue.StartDialogue(); // Start the dialogue
+                if(hasObject == true || givenObject == true) currentDialogue.ObjectStartDialogue();
+                Debug.Log(givenObject);
             }
         }
     }

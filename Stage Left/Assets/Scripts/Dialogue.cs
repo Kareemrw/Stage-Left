@@ -10,11 +10,10 @@ public class Dialogue : MonoBehaviour
     public string[] lines;
     public string[] objectLines;
     public float textSpeed;
-
+    
     private int index;
     private bool isDialogueActive;
     private bool isObjectDialogueActive;
-
     void Start()
     {
         if (textComponent != null)
@@ -79,7 +78,7 @@ public class Dialogue : MonoBehaviour
             StartDialogue();
             return;
         }
-
+        
         index = 0;
         isObjectDialogueActive = true;
         isDialogueActive = false;
@@ -87,6 +86,20 @@ public class Dialogue : MonoBehaviour
         textComponent.text = string.Empty;
         StartCoroutine(TypeLine());
         PlayerController.hasObject = false;
+        PlayerController.givenObject = true;
+         BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
+    Debug.Log("Number of BoxColliders found: " + colliders.Length);
+
+    if (colliders.Length > 1)
+    {
+        // Confirm we're accessing the second collider
+        Debug.Log("Destroying second BoxCollider: " + colliders[1].name);
+        Destroy(colliders[1]); // Attempt to remove the second BoxCollider
+    }
+    else
+    {
+        Debug.LogWarning("Second BoxCollider not found or does not exist.");
+    }
     }
 
     IEnumerator TypeLine()
