@@ -1,48 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
     [SerializeField] private string nextScene;
-    private GameObject[] disableObjects;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject player; // Reference to the player object
+    private Vector3 nextScenePosition = new Vector3(-3.57f, -1.37f, 0); // Adjust this position as needed
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
-    }
-    void FixedUpdate()
-    {
-
+        if (player != null)
+        {
+            DontDestroyOnLoad(player); // Ensure player persists across scenes
+        }
     }
 
-    // Detects if player has entered scene edge trigger
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            // Changes Scene
             if (nextScene != null)
             {
+                SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to sceneLoaded each time
                 SceneManager.LoadScene(nextScene);
             }
         }
     }
 
-    // Function updates variables and gameObjects to match day state
-    // Potentially could be moved to NPC script
-    private void dayChange()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        player.GetComponent<PlayerController>().dayUpdate();
-        string currDay = player.GetComponent<PlayerController>().dayCheck();
-        disableObjects = GameObject.FindGameObjectsWithTag(currDay);
-        for (int i = 0; i < disableObjects.Length; i++)
+        GameObject player = GameObject.FindWithTag("Player"); // Find the player in the new scene
+        if (player != null)
         {
-            disableObjects[i].SetActive(false);
+            player.transform.position = nextScenePosition; // Set the position for the next scene
         }
+        
+        // Unsubscribe to avoid duplicate calls
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

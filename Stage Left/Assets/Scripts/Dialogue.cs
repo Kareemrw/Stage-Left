@@ -21,13 +21,21 @@ public class Dialogue : MonoBehaviour
             textComponent.text = string.Empty;
             textComponent.transform.parent.gameObject.SetActive(false); // Keep the text component hidden initially
         }
+        if (playerController == null)
+    {
+        playerController = FindObjectOfType<PlayerController>();
+        if (playerController == null)
+        {
+            Debug.LogError("PlayerController not found in the scene. Please assign it in the Inspector.");
+        }
+    }
     }
 
     void Update()
     {
         if(PlayerController.givenObject == true) 
         {
-            playerController.dayUpdate();
+            playerController.DayUpdate();
             playerController.RemoveObjectsWithTag("Day1");
         }
         if ((isDialogueActive || isObjectDialogueActive) && Input.GetMouseButtonDown(0))

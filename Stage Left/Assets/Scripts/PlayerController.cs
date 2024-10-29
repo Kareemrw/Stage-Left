@@ -3,25 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
+
 {
+   private static PlayerController instance;
+    
     [SerializeField] private float hSpeed;
     [SerializeField] private int dayCount;
     [SerializeField] private GameObject leftTrigger;
     private float hMove;
 
     private bool faceRight = true;
-    private bool canTalk = false; // Indicates if the player can interact
-    private Dialogue currentDialogue; // Reference to the current NPC dialogue
+    private bool canTalk = false;
+    private Dialogue currentDialogue;
     public static bool hasObject = false;
     public static bool givenObject = false;
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    void Awake()
+    {
+        // Check if instance already exists and if it's not this, destroy this instance
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // Set this instance as the singleton instance
+        instance = this;
+        DontDestroyOnLoad(gameObject); // Ensure it persists across scenes
     }
 
     void FixedUpdate()
     {
+        
         if (currentDialogue == null || !currentDialogue.IsDialogueActive()){
             ActivateEKey(true);
             hMove = Input.GetAxis("Horizontal");
@@ -34,6 +47,19 @@ public class PlayerController : MonoBehaviour
             
             if (hMove < 0 && faceRight) Flip();
 
+        }
+        if (dayCount == 2)
+        {
+            GameObject[] day2Objects = GameObject.FindGameObjectsWithTag("Day2");
+            foreach (GameObject obj in day2Objects)
+            {
+                obj.SetActive(true);
+            }
+            GameObject[] day1Objects = GameObject.FindGameObjectsWithTag("Day1");
+            foreach (GameObject obj in day1Objects)
+            {
+                obj.SetActive(false);
+            }
         }
 
     }
@@ -100,18 +126,14 @@ public class PlayerController : MonoBehaviour
         }
     }
     // Function to update current day variable
-      public void dayUpdate()
+      public void DayUpdate()
     {
-        this.dayCount += 1;
+        dayCount += 1;
         
         // Activates left SceneTrigger to allow for game end state
-        if (this.dayCount == 2)
+        if (dayCount == 2)
         {
-            GameObject[] day2Objects = GameObject.FindGameObjectsWithTag("Day2");
-            foreach (GameObject obj in day2Objects)
-            {
-                obj.SetActive(true);
-            }
+        
             leftTrigger.SetActive(true);
         }
     }
@@ -119,7 +141,7 @@ public class PlayerController : MonoBehaviour
     // Function to convert current day into a string
     public string dayCheck()
     {
-        return "Day"+this.dayCount;
+        return "Day"+ dayCount;
     }
     public void RemoveObjectsWithTag(string tag)
     {
